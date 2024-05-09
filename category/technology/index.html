@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/5cc8a913a8.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        @layer utilities{
+            .captiontext{
+                @apply bg-slate-700 text-white pb-8 px-4 font-bold  py-2
+            }
+            .catheader{
+                @apply font-bold text-center text-xl items-center justify-center w-full
+            }
+            .catheader2{
+                @apply font-bold text-center items-center justify-center w-full text-4xl py-4 pt-6
+            }
+            .hrlinehead{
+                @apply inline-flex items-center justify-center w-full
+
+            }
+            .hrlinered{
+                @apply w-14 h-1 my-2 bg-red-400 border-0
+            }
+            .hrlinered2{
+                @apply w-24 h-1 my-2 bg-red-400 border-0
+            }
+            .hrlinered3{
+                @apply w-24 h-1 bg-red-400 border-0
+            }
+            .hrlineteal{
+                @apply w-14 h-1 my-2 bg-teal-400 border-0
+            }
+            .cards{
+                @apply max-w-sm bg-white border border-gray-200 shadow 
+            }
+            .subhead{
+                @apply px-4 py-6 text-sm
+            }
+            .btngreen{
+                @apply text-teal-400  border border-teal-400  font-medium text-sm px-5 py-2.5 text-center me-2 mb-2 object-right
+            }
+            .btnteal2{
+                @apply text-white  border border-teal-400 bg-teal-400 font-medium text-sm px-5 py-2.5 text-center me-2 mb-2 object-right w-56
+            }
+            .btnfb{
+                @apply text-white  border border-blue-600 bg-blue-600 rounded font-medium text-2xl px-5 py-2 text-center me-2 mb-2 object-right w-24
+            }
+            .btnig{
+                @apply text-white  border border-gray-900 bg-gray-900 rounded font-medium text-2xl px-5 py-2 text-center me-2 mb-2 object-right w-24
+            }
+            .btnyt{
+                @apply text-white  border border-red-600 bg-red-600 rounded font-medium text-2xl px-5 py-2 text-center me-2 mb-2 object-right w-24
+            }
+
+            .btnred{
+                @apply text-red-400 border border-red-400 font-medium rounded-lg text-sm px-5 py-2 text-center me-2 mb-2 border-2
+            }
+            .bodysub{
+                @apply px-2 tracking-tighter text-sm text-black
+            }
+            .btnpad{
+                @apply pl-[70%] md:pl-[50%] 
+            }
+            .sideheadline{
+                @apply grid grid-cols-12 px-4 pt-4
+            }
+            .sidefont {
+                @apply col-span-7 px-2 font-thin text-sm
+            }
+            .datetext{
+                @apply text-xs font-bold tracking-tighter text-gray-400
+            }
+            .cardplay{
+                @apply bg-white px-4 py-6 h-20 mx-1 border-solid my-2 text-sm grid grid-cols-12 border border-gray-300
+            }
+            .vidfont{
+                @apply col-span-11 font-thin
+            }
+            .lowsectcard{
+                @apply grid grid-cols-2 border-solid border border-gray-300 px-2 py-1 mx-2 my-2 overflow-hidden tracking-tighter
+            }
+            .subhead a:link {
+                @apply text-black
+            }
+            .subhead a:visited {
+                @apply text-black
+            }
+            .btnsns {
+                @apply bg-transparent text-white h-12 w-12 font-semibold py-2 px-2 border border-2 border-white rounded rounded-full text-2xl
+            }
+            
+           
+        }
+    </style>
+    <style>
+        * {box-sizing: border-box}
+        body {font-family: Verdana, sans-serif; margin:0}
+        .mySlides {display: none}
+        img {vertical-align: middle;}
+        
+        /* Slideshow container */
+        .slideshow-container {
+          max-width: 1000px;
+          position: relative;
+          margin: auto;
+        }
+        
+        /* Next & previous buttons */
+        .prev, .next {
+          cursor: pointer;
+          position: absolute;
+          top: 50%;
+          width: auto;
+          padding: 16px;
+          margin-top: -22px;
+          color: white;
+          font-weight: bold;
+          font-size: 18px;
+          transition: 0.6s ease;
+          border-radius: 0 3px 3px 0;
+          user-select: none;
+        }
+        
+        /* Position the "next button" to the right */
+        .next {
+          right: 0;
+          border-radius: 3px 0 0 3px;
+        }
+        
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+          background-color: rgba(0,0,0,0.8);
+        }
+        
+        /* Caption text */
+        .text {
+          color: #f2f2f2;
+          font-size: 15px;
+          padding: 8px 12px;
+          position: absolute;
+          bottom: 8px;
+          width: 100%;
+          text-align: center;
+        }
+        
+        /* Number text (1/3 etc) */
+        .numbertext {
+          color: #f2f2f2;
+          font-size: 12px;
+          padding: 8px 12px;
+          position: absolute;
+          top: 0;
+        }
+        
+        /* The dots/bullets/indicators */
+        .dot {
+          cursor: pointer;
+          height: 15px;
+          width: 15px;
+          margin: 0 2px;
+          background-color: #bbb;
+          border-radius: 50%;
+          display: inline-block;
+          transition: background-color 0.6s ease;
+        }
+        
+        .active, .dot:hover {
+          background-color: #717171;
+        }
+        
+        /* Fading animation */
+        .fade {
+          animation-name: fade;
+          animation-duration: 1.5s;
+        }
+        
+        @keyframes fade {
+          from {opacity: .4} 
+          to {opacity: 1}
+        }
+        
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+          .prev, .next,.text {font-size: 11px}
+        }
+        </style>
+    <title>Streamviralmedia</title>
+</head>
+<body class="bg-neutral-200">
+    <nav>
+    </nav>
+
+    <div class="content md:mx-[17%]  md:w-[66%] bg-white">
+        <nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+              <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                  <img src="../../src/images/logo.png" class="h-14 md:w-[30%] md:h-auto" alt="Flowbite Logo" />
+              </a>
+              <button data-collapse-toggle="navbar-multi-level" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-multi-level" aria-expanded="false">
+                  <span class="sr-only">Open main menu</span>
+                  <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                  </svg>
+              </button>
+              <div class="hidden w-full s:block md:w-auto" id="navbar-multi-level">
+
+               </div>
+            </div>
+          </nav>
+          <div class="hidden md:grid  bg-teal-600 w-full h-14 grid grid-flow-col  px-12 py-4 text-white font-bold" >
+            <div class="grid grid-flow-col  ">
+            <div>
+                <a href="../../index.html">
+                <i class="fa-solid fa-house"></i>
+                </a>
+            </div>
+            
+            <div>  
+                <a href="../must-read/index.html">
+                  Must See
+                </a>
+                
+            </div>
+            <div>
+                 <a href="../must-know/index.html">
+                  Must Know
+                </a>
+               
+            </div>
+            <div>
+                <a href="../news/index.html">
+                    News
+                </a>
+                
+            </div>
+           
+            <div>
+                <a href="../hot-girl/index.html">
+                    Hot Girl
+                </a>
+                
+            </div>
+        
+            <div>
+                <a href="../technology/index.html">
+                   Technology
+                </a>
+                
+            </div>
+           
+        </div>
+        <div class="grid justify-items-end">
+            <div>
+            <i class="fa-solid fa-magnifying-glass"></i>
+           
+            
+        </div>
+        </div>
+        </div>
+        <!-- nav red -->
+
+
+        <!-- ads section -->
+        <div class="grid grid-cols-3">
+            <div class="px-1">
+                <img src="../../src/images/technology/head1.jpg" alt="">
+            </div>
+
+
+            <div class="px-1">
+                <img src="../../src/images/technology/head2.jpg" alt="">
+            </div>
+
+            <div class="px-1">
+                <img src="../../src/images/technology/head3.jpg" alt="">
+            </div>
+        </div>
+
+         <!-- ads section -->
+
+         <div>
+            <div class="catheader2">
+                <h1> Technologies </span>   
+                <div class="hrlinehead">
+                        <hr class="hrlinered3">
+                </div>
+         </div>
+
+        </div>
+
+        <!-- head -->
+        <div class="grid md:grid-cols-3 px-2 py-2">
+            
+            <div class="md:col-span-2">
+
+              
+                <!-- vidsect -->
+               
+                <!-- vidsect -->
+
+
+                <!-- lowsect -->
+                <div class="mb-24">
+                
+                <div class="grid md:grid-cols-1 px-2 py-2">
+                    <div class="grid grid-cols-4 my-2">
+                        <div>
+                            <img src="../../src/images/technology/sub1.jpg" alt="">
+                        </div>
+                        <div class="col-span-3 px-4">
+                            <div>
+                                  <a href="#">
+                                    <span class="font-bold mb-4">
+                                        [This version can only be used❗] Google Play’s new feature ⚡ can “download multiple apps at the same time” Go to Update~                                
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="text-sm mt-8">
+                                <span>
+                                    7 May 2024丨
+                                    </span>
+                                    <span>
+                                        By <span class="text-red-400">
+                                            偷吃奶酪的杰瑞
+                                         </span>
+                                </span>
+                         </div>
+                        </div>
+
+                    </div>
+                    <hr class="mb-4">
+
+                    <div class="grid grid-cols-4 my-2">
+                        <div>
+                            <img src="../../src/images/technology/sub2.jpg" alt="">
+                        </div>
+                        <div class="col-span-3 px-4">
+                            <div>
+                                 <a href="#">
+                                    <span class="font-bold mb-4">
+                                        [No need to bring Hong Kong dollars❗] AlipayHK supports TnG eWallet You can also "scan the QR code to pay" in Hong Kong!                            
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="text-sm mt-8">
+                                <span>
+                                    7 May 2024|
+                                    </span>
+                                    <span>
+                                        By <span class="text-red-400">
+                                            笑场的木偶人
+                                        </span>
+                                </span>
+                         </div>
+                        </div>
+
+                    </div>
+                    <hr class="mb-4">
+
+
+                    <div class="grid grid-cols-4 my-2">
+                        <div>
+                            <img src="../../src/images/technology/sub3.jpg" alt="">
+                        </div>
+                        <div class="col-span-3 px-4">
+                            <div>
+                                    <a href="#">
+                                    <span class="font-bold mb-4">
+                                        [Must know for new investors! 】Maybank launches a new feature "Gold-Based Investment"! Minimum RM200✨DIY your investment plan!                            
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="text-sm mt-8">
+                                <span>
+                                    7 May 2024丨
+                                    </span>
+                                    <span>
+                                        By <span class="text-red-400">
+                                            爱吃瓜的小熊
+                                        </span>
+                                </span>
+                         </div>
+                        </div>
+
+                    </div>
+                    <hr class="mb-4">
+
+
+                    <div class="grid grid-cols-4 my-2">
+                        <div>
+                            <img src="../../src/images/technology/sub4.jpg" alt="">
+                        </div>
+                        <div class="col-span-3 px-4">
+                            <div>
+                                  <a href="#">
+                                    <span class="font-bold mb-4">
+                                        【No more SMS messages! 】Maybank completes these transactions ✨ From April 22, you will only receive "APP pop-up notifications"! Attached method~                            
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="text-sm mt-8">
+                                <span>
+                                   19 Apr 2024 |
+                                    </span>
+                                    <span>
+                                        By <span class="text-red-400">
+                                            隔壁香闺的王阿姨
+                                        </span>
+                                </span>
+                         </div>
+                        </div>
+
+                    </div>
+                    <hr class="mb-4">
+                    
+                    
+                    <div class="grid grid-cols-4 my-2">
+                        <div>
+                            <img src="../../src/images/technology/sub5.jpg" alt="">
+                        </div>
+                        <div class="col-span-3 px-4">
+                            <div>
+                                  <a href="#">
+                                    <span class="font-bold mb-4">
+                                        [Attention Android users❗] These 3 mobile apps “hide spyware⚡” and your personal information may be stolen!                            
+                                    </span>
+                                    </a>
+                            </div>
+                            <div class="text-sm mt-8">
+                                <span>
+                                    7 May 2024|
+                                    </span>
+                                    <span>
+                                        By <span class="text-red-400">
+                                            笑场的木偶人
+                                        </span>
+                                </span>
+                         </div>
+                        </div>
+
+                    </div>
+                    <hr class="mb-4">
+
+                    <div class="grid grid-cols-4 my-2">
+                        <div>
+                            <img src="../../src/images/technology/sub6.jpg" alt="">
+                        </div>
+                        <div class="col-span-3 px-4">
+                            <div>
+                                    <a href="#">
+                                    <span class="font-bold mb-4">
+                                        
+                                        [Attention for overseas consumption✈] Starting from April 25th⚡ TNG eWallet will charge a “1% overseas transaction conversion fee”!                            
+                                    </span>
+                                       </a>
+                            </div>
+                            <div class="text-sm mt-8">
+                                <span>
+                                    7 May 2024 |
+                                    </span>
+                                    <span>
+                                        By <span class="text-red-400">
+                                            隔壁香闺的王阿姨
+                                        </span>
+                                </span>
+                         </div>
+                        </div>
+
+                    </div>
+                    <hr class="mb-4">
+
+
+                    <div class="grid grid-cols-4 my-2">
+                        <div>
+                            <img src="../../src/images/technology/sub7.jpg" alt="">
+                        </div>
+                        <div class="col-span-3 px-4">
+                            <div>
+                                   <a href="#">
+                                    <span class="font-bold mb-4">
+                                        [Recommendation for new mobile phones under RM2000✨📱The comprehensive cost-effectiveness + configuration is definitely worth buying!                            
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="text-sm mt-8">
+                                <span>
+                                    7 May 2024|
+                                    </span>
+                                    <span>
+                                        By <span class="text-red-400">
+                                            爱吃腦小能
+                                        </span>
+                                </span>
+                         </div>
+                        </div>
+
+                    </div>
+                    <hr class="mb-4">
+
+
+
+
+                </div>
+
+                <div class="grid grid-cols-1">
+                    <button type="button" class="btnred justify-self-center w-40 text-lg">Load More</button>
+
+                </div>
+            </div>
+            </div> 
+            <!-- col span 2 -->
+
+
+            <!-- side -->
+            <div class="my-12 mb-16">
+                <!-- follow -->
+                <div class="grid grid-cols-1">
+                    <div class="justify-self-center">
+                        <span class="text-sm tracking-tighter font-bold">FOLLOW US</span>
+                    </div>
+                    <div class="py-2 grid grid-cols-3 mx-4">
+                        <div class="">
+                        <button class="btnfb">
+                            <i class="fa-brands fa-facebook-f "></i>
+                          </button>
+                        </div>
+                        <div class="">
+                            <button class="btnig">
+                                <i class="fa-brands fa-instagram"></i>
+                              </button>
+                        </div>
+                        
+
+                        <div class="">
+                            <button class="btnyt">
+                                <i class="fa-brands fa-youtube"></i>
+                              </button>
+                        </div>
+                        
+                          
+                    </div>
+                </div>
+
+
+                <!-- fb page -->
+
+
+                <!-- header -->
+                 <div class="catheader">
+                        <span> Popular </span>   
+                        <div class="hrlinehead">
+                                <hr class="hrlineteal">
+                        </div>
+                 </div>
+
+
+                 <div class="sideheadline">
+                    <div class="col-span-5">
+                        <img src="../../src/images/sidesub1.jpg" class="w-full ">
+                    </div>
+                    <div class="sidefont">
+                        [Severe cases can lead to blindness😱] Leprosy cases are on the rise in Malaysia. "These symptoms⚡" you must know!
+                    </div>
+                 </div>
+                 <div class="pb-4 px-2 pl-52">
+                    <span class="datetext"> posted 5 days ago </span>
+                 </div>
+                 <hr>
+
+                 <div class="sideheadline">
+                    <div class="col-span-5">
+                        <img src="../../src/images/sidesub2.jpg" class="w-full ">
+                    </div>
+                    <div class="sidefont">
+                        [Forced to work at age 70❗️] A Malaysian man “spent all his RM700,000” EPF savings in just 3 years after retirement😱!
+                    </div>
+                 </div>
+                 <div class="pb-4 px-2 pl-52">
+                    <span class="datetext"> posted 4 days ago </span>
+                 </div>
+                 <hr>
+
+                 <div class="sideheadline">
+                    <div class="col-span-5">
+                        <img src="../../src/images/sidesub3.jpg" class="w-full ">
+                    </div>
+                    <div class="sidefont">
+                        [Read carefully before applying❗️] If you want to withdraw money from EPF Account 3, you must meet these "4 major conditions⚡"
+                    </div>
+                 </div>
+                 <div class="pb-4 px-2 pl-52">
+                    <span class="datetext"> posted 2 days ago </span>
+                 </div>
+                 <hr>
+                 
+                 <div class="sideheadline">
+                    <div class="col-span-5">
+                        <img src="../../src/images/sidesub4.jpg" class="w-full ">
+                    </div>
+                    <div class="sidefont">
+                        【No 'Eagle' to watch🦅】Langkawi⚡Eagle Square is completely closed until further notice!
+                    </div>
+                 </div>
+                 <div class="pb-4 px-2 pl-52">
+                    <span class="datetext"> posted 5 days ago </span>
+                 </div>
+                 <hr>
+
+                 <div class="sideheadline">
+                    <div class="col-span-5">
+                        <img src="../../src/images/sidesub5.jpg" class="w-full ">
+                    </div>
+                    <div class="sidefont">
+                        [No need to go to the bank❗] Help your child open a "Maybank Yippie/-i Savings Account"⚡It can be done in 10 minutes! Just use the MAE app~
+                    </div>
+                 </div>
+                 <div class="pb-4 px-2 pl-52">
+                    <span class="datetext"> posted 2 days ago </span>
+                 </div>
+                 <hr>
+
+                 <div class="sideheadline">
+                    <div class="col-span-5">
+                        <img src="../../src/images/sidesub6.jpg" class="w-full ">
+                    </div>
+                    <div class="sidefont">
+                        【Price Reduced❗️】KFC launches "9 Sets Promotion🔥" A Set of Rice Plate is as low as RM9.99!
+                    </div>
+                 </div>
+                 <div class="pb-4 px-2 pl-52">
+                    <span class="datetext"> posted 2 days ago </span>
+                 </div>
+                 <hr>
+
+                 <div class="sideheadline">
+                    <div class="col-span-5">
+                        <img src="../../src/images/sidesub7.jpg" class="w-full ">
+                    </div>
+                    <div class="sidefont">
+                        
+                            [Dreaming about deceased parents and relatives] turns out to be a hint⚡ Experts reveal the truth "It's related to reality"❗️
+                    </div>
+                 </div>
+                 <div class="pb-4 px-2 pl-52">
+                    <span class="datetext"> posted 15 hours ago </span>
+                 </div>
+                 <hr>
+
+
+                 <div class="sideheadline">
+                    <div class="col-span-5">
+                        <img src="../../src/images/sidesub8.jpg" class="w-full ">
+                    </div>
+                    <div class="sidefont">
+                        [The Light of Malaysian Internet Celebrities✨] Malay cousin “Selling Durian on Douyin” has sales of up to RM490,000 in one month❗️
+                    </div>
+                 </div>
+                 <div class="pb-4 px-2 pl-52">
+                    <span class="datetext"> posted 4 days ago </span>
+                 </div>
+                 <hr>
+
+                 <div class="sideheadline">
+                    <div class="col-span-5">
+                        <img src="../../src/images/sidesub9.jpg" class="w-full ">
+                    </div>
+                    <div class="sidefont">
+                        【Price Reduced❗️】KFC launches "9 Sets Promotion🔥" A Set of Rice Plate is as low as RM9.99!
+                    </div>
+                 </div>
+                 <div class="pb-4 px-2 pl-52">
+                    <span class="datetext"> posted 2 days ago </span>
+                 </div>
+                 <hr>
+
+                 <div class="sideheadline">
+                    <div class="col-span-5">
+                        <img src="../../src/images/sidesub10.jpg" class="w-full ">
+                    </div>
+                    <div class="sidefont">
+                        【Obviously looks OK❗️】A man said he was almost 30 years old but still "single" and was criticized by netizens: Don't beautify yourself⚡
+                    </div>
+                 </div>
+                 <div class="pb-4 px-2 pl-52">
+                    <span class="datetext"> posted 5 days ago </span>
+                 </div>
+                 <hr>
+
+                 
+
+        </div>
+        <!-- side -->
+       
+
+        </div>
+
+    </div>
+    <!-- /content -->
+
+    <!-- footer start -->
+    <div class=" md:h-98 bg-neutral-900 w-[100%] relative py-4">
+        <div class="content md:mx-[17%]  md:w-[66%] text-neutral-400 text-sm">
+            <div class="grid px-6 md:px-4 md:grid-cols-3 justify-items-center">
+
+                <div>
+                    <p class="mb-4">
+                        All articles on this site are published immediately by members. This site does not bear any legal responsibility for the authenticity, completeness and position of all articles. All article content only represents the personal opinions of the author and not the position of this website. Users should not rely on the content and should judge the authenticity of the content by themselves. The poster owns the article posted on Viralmedia.
+                    </p>
+                    <p>
+                        Since this site is subject to the "real-time publication" operating mode, we cannot fully monitor all real-time articles. If there are any inappropriate articles or if you have any doubts about the source of the article, please contact us and we will remove it as soon as possible. This site has the right to delete any comments and refuse anyone to post. It also has the right not to delete articles.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1">
+                    <div class="justify-self-center">
+                    <p class="font-bold">Follow Us</p>
+                    </div>
+                    <div class="py-2 grid grid-cols-3">
+                        <div class="mx-2">
+                        <button class="btnsns">
+                            <i class="fa-brands fa-facebook-f "></i>
+                          </button>
+                        </div>
+                        <div class="mx-2">
+                            <button class="btnsns">
+                                <i class="fa-brands fa-instagram"></i>
+                              </button>
+                        </div>
+                        
+
+                        <div class="mx-2">
+                            <button class="btnsns">
+                                <i class="fa-brands fa-youtube"></i>
+                              </button>
+                        </div>
+                        
+                          
+                    </div>
+                </div>
+
+
+                <div>
+                    <div class="grid grid-cols-1">
+                        <div class="justify-self-center mb-6">
+                            <p class="font-bold">
+                                联系我们
+                            </p>
+                        </div>
+                        <div class="justify-self-center">
+                            <button class="btnteal2">
+                                Advertise With Us
+                            </button>
+                        </div>
+                        <div class="justify-self-center">
+                            <button class="btnteal2">
+                               Terms & Conditions
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="grid grid-cols-1">
+                <div class="justify-self-center text-sm">
+                    <img class="" src="./src/images/logowhite-sm.png" alt="">
+                </div>
+                <div class="justify-self-center text-xs mt-4">
+                    <p>
+
+                    </p>
+                    
+                </div>
+                <div class="justify-self-center text-xs">
+                    <p>ViralMedia 2024 - All Rights Reserved</p>
+                    
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+   
+    <!-- footer -->
+
+
+    <script>
+       
+       let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 10000); // Change image every 2 seconds
+}
+        </script>
+
+
+</body>
+</html>

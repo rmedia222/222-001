@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/5cc8a913a8.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        @layer utilities{
+            .captiontext{
+                @apply bg-slate-700 text-white pb-8 px-4 font-bold  py-2
+            }
+            .catheader{
+                @apply font-bold text-center text-xl items-center justify-center w-full
+            }
+            .catheader2{
+                @apply font-bold text-center items-center justify-center w-full text-4xl py-4 pt-6
+            }
+            .hrlinehead{
+                @apply inline-flex items-center justify-center w-full
+
+            }
+            .hrlinered{
+                @apply w-14 h-1 my-2 bg-red-400 border-0
+            }
+            .hrlinered2{
+                @apply w-24 h-1 my-2 bg-red-400 border-0
+            }
+            .hrlinered3{
+                @apply w-24 h-1 bg-red-400 border-0
+            }
+            .hrlineteal{
+                @apply w-14 h-1 my-2 bg-teal-400 border-0
+            }
+            .cards{
+                @apply max-w-sm bg-white border border-gray-200 shadow 
+            }
+            .subhead{
+                @apply px-4 py-6 text-sm
+            }
+            .btngreen{
+                @apply text-teal-400  border border-teal-400  font-medium text-sm px-5 py-2.5 text-center me-2 mb-2 object-right
+            }
+            .btnteal2{
+                @apply text-white  border border-teal-400 bg-teal-400 font-medium text-sm px-5 py-2.5 text-center me-2 mb-2 object-right w-56
+            }
+            .btnfb{
+                @apply text-white  border border-blue-600 bg-blue-600 rounded font-medium text-2xl px-5 py-2 text-center me-2 mb-2 object-right w-24
+            }
+            .btnig{
+                @apply text-white  border border-gray-900 bg-gray-900 rounded font-medium text-2xl px-5 py-2 text-center me-2 mb-2 object-right w-24
+            }
+            .btnyt{
+                @apply text-white  border border-red-600 bg-red-600 rounded font-medium text-2xl px-5 py-2 text-center me-2 mb-2 object-right w-24
+            }
+
+            .btnred{
+                @apply text-red-400 border border-red-400 font-medium rounded-lg text-sm px-5 py-2 text-center me-2 mb-2 border-2
+            }
+            .bodysub{
+                @apply px-2 tracking-tighter text-sm text-black
+            }
+            .btnpad{
+                @apply pl-[70%] md:pl-[50%] 
+            }
+            .sideheadline{
+                @apply grid grid-cols-12 px-4 pt-4
+            }
+            .sidefont {
+                @apply col-span-7 px-2 font-thin text-sm
+            }
+            .datetext{
+                @apply text-xs font-bold tracking-tighter text-gray-400
+            }
+            .cardplay{
+                @apply bg-white px-4 py-6 h-20 mx-1 border-solid my-2 text-sm grid grid-cols-12 border border-gray-300
+            }
+            .vidfont{
+                @apply col-span-11 font-thin
+            }
+            .lowsectcard{
+                @apply grid grid-cols-2 border-solid border border-gray-300 px-2 py-1 mx-2 my-2 overflow-hidden tracking-tighter
+            }
+            .subhead a:link {
+                @apply text-black
+            }
+            .subhead a:visited {
+                @apply text-black
+            }
+            .btnsns {
+                @apply bg-transparent text-white h-12 w-12 font-semibold py-2 px-2 border border-2 border-white rounded rounded-full text-2xl
+            }
+            
+           
+        }
+    </style>
+    <style>
+        * {box-sizing: border-box}
+        body {font-family: Verdana, sans-serif; margin:0}
+        .mySlides {display: none}
+        img {vertical-align: middle;}
+        
+        /* Slideshow container */
+        .slideshow-container {
+          max-width: 1000px;
+          position: relative;
+          margin: auto;
+        }
+        
+        /* Next & previous buttons */
+        .prev, .next {
+          cursor: pointer;
+          position: absolute;
+          top: 50%;
+          width: auto;
+          padding: 16px;
+          margin-top: -22px;
+          color: white;
+          font-weight: bold;
+          font-size: 18px;
+          transition: 0.6s ease;
+          border-radius: 0 3px 3px 0;
+          user-select: none;
+        }
+        
+        /* Position the "next button" to the right */
+        .next {
+          right: 0;
+          border-radius: 3px 0 0 3px;
+        }
+        
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+          background-color: rgba(0,0,0,0.8);
+        }
+        
+        /* Caption text */
+        .text {
+          color: #f2f2f2;
+          font-size: 15px;
+          padding: 8px 12px;
+          position: absolute;
+          bottom: 8px;
+          width: 100%;
+          text-align: center;
+        }
+        
+        /* Number text (1/3 etc) */
+        .numbertext {
+          color: #f2f2f2;
+          font-size: 12px;
+          padding: 8px 12px;
+          position: absolute;
+          top: 0;
+        }
+        
+        /* The dots/bullets/indicators */
+        .dot {
+          cursor: pointer;
+          height: 15px;
+          width: 15px;
+          margin: 0 2px;
+          background-color: #bbb;
+          border-radius: 50%;
+          display: inline-block;
+          transition: background-color 0.6s ease;
+        }
+        
+        .active, .dot:hover {
+          background-color: #717171;
+        }
+        
+        /* Fading animation */
+        .fade {
+          animation-name: fade;
+          animation-duration: 1.5s;
+        }
+        
+        @keyframes fade {
+          from {opacity: .4} 
+          to {opacity: 1}
+        }
+        
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+          .prev, .next,.text {font-size: 11px}
+        }
+        </style>
+    <title>Streamviralmedia</title>
+</head>
+<body class="bg-neutral-200">
+    <nav>
+    </nav>
+
+    <div class="content md:mx-[17%]  md:w-[66%] bg-white">
+        <nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+              <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                  <img src="../../src/images/logo.png" class="h-14 md:w-[30%] md:h-auto" alt="Flowbite Logo" />
+              </a>
+              <button data-collapse-toggle="navbar-multi-level" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-multi-level" aria-expanded="false">
+                  <span class="sr-only">Open main menu</span>
+                  <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                  </svg>
+              </button>
+              <div class="hidden w-full s:block md:w-auto" id="navbar-multi-level">
+
+               </div>
+            </div>
+          </nav>
+          <div class="hidden md:grid  bg-red-400 w-full h-14 grid grid-flow-col  px-12 py-4 text-white font-bold" >
+            <div class="grid grid-flow-col  ">
+            <div>
+                <i class="fa-solid fa-house"></i>
+            </div>
+            <div>
+                <a href="#">
+                必吃
+                </a>
+            </div>
+            <div>
+              
+                 <a href="#">
+                  必学
+                </a>
+            </div>
+            <div>  
+                <a href="#">
+                  必看
+                </a>
+                
+            </div>
+            <div>
+                 <a href="#">
+                  必知
+                </a>
+               
+            </div>
+            <div>
+                <a href="#">
+                    新闻
+                </a>
+                
+            </div>
+            <div>
+                <a href="#">
+                    旅游
+                </a>
+               
+            </div>
+            <div>
+                <a href="#">
+                    正妹
+                </a>
+                
+            </div>
+            <div>
+                <a href="#">
+                    免费
+                </a>
+                
+            </div>
+            <div>
+                <a href="#">
+                    科技
+                </a>
+                
+            </div>
+            <div>
+                <a href="#">
+                    视频
+                </a>
+                
+            </div>
+            <div>
+                <a href="#">
+                    演唱会
+                </a>
+                
+               
+            </div>
+            <div>在线收听</div>
+        </div>
+        <div class="grid justify-items-end">
+            <div>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <a href="#">
+                登录
+            </a>
+            
+            </div>
+            </div>
+        </div>
+        <!-- nav red -->
+
+
+        <!-- ads section -->
+        <div class="grid grid-cols-3">
+            <div class="px-1">
+                <img src="../../src/images/must-know/head1.jpg" alt="">
+            </div>
+
+
+            <div class="px-1">
+                <img src="../../src/images/must-know/head2.jpg" alt="">
+            </div>
+
+            <div class="px-1">
+                <img src="../../src/images/must-know/head3.jpg" alt="">
+            </div>
+        </div>
+
+         <!-- ads section -->
+
+         <div>
+            <div class="catheader2">
+                <h1>  必知 </span>   
+                <div class="hrlinehead">
+                        <hr class="hrlinered3">
+                </div>
+         </div>
+
+        </div>
+
+        <!-- head -->
+        <div class="grid md:grid-cols-3 px-2 py-2">
+            
+            <div class="md:col-span-2">
+
+              
+                <!-- vidsect -->
+               
+                <!-- vidsect -->
+
+
+                <!-- lowsect -->
+                <div class="mb-24">
+                
+                <div class="grid md:grid-cols-1 px-2 py-2">
+                    <div class="grid grid-cols-4 my-2">
+                        <div>
+                            <img src="../../src/images/must-know/sub1.jpg" alt="">
+                        </div>
+                        <div class="col-span-3 px-4">
+                            <div>
+                                    <span class="font-bold mb-4">
+                                        
+                                        【来一场韩国Trip】Watsons免费送你去「5天4夜秋季之旅🍁」一起赏枫叶！快来看怎么参与~ 
+                                    </span>
+                            </div>
+                            <div class="text-sm mt-8">
+                                <span>
+                                    24 April 2024丨
+                                    </span>
+                                    <span>
+                                        By <span class="text-red-400">
+                                            笑场的木偶人
+                                         </span>
+                                </span>
+                         </div>
+                        </div>
+
+                    </div>
+                    <hr class="mb-4">
+
+                    <div class="grid grid-cols-4 my-2">
+                        <div>
+                            <img src="../../src/images/must-know/sub2.jpg" alt="">
+                        </div>
+                        <div class="col-span-3 px-4">
+                            <div>
+                                    <span class="font-bold mb-4">
+                                        
+                                        【内附申请方法😍】Zoo Negara会员卡「只需RM35」一整年无限次进入国家动物园🐾
+                                    </span>
+                            </div>
+                            <div class="text-sm mt-8">
+                                <span>
+                                    19 April 2024|
+                                    </span>
+                                    <span>
+                                        By <span class="text-red-400">
+                                            笑场的木偶人
+                                        </span>
+                                </span>
+                         </div>
+                        </div>
+
+                    </div>
+                    <hr class="mb-4">
+
+
+                    <div class="grid grid-cols-4 my-2">
+                        <div>
+                            <img src="../../src/images/must-know/sub3.jpg" alt="">
+                        </div>
+                        <div class="col-span-3 px-4">
+                            <div>
+                                    <span class="font-bold mb-4">
+                                        
+                                        【大马这个地方上榜！】Agoda推荐5月份✨最适合去的「5个凉凉爽爽」旅游好去处🌈！
+                                    </span>
+                            </div>
+                            <div class="text-sm mt-8">
+                                <span>
+                                   19 Apr 2024丨
+                                    </span>
+                                    <span>
+                                        By <span class="text-red-400">
+                                            辣椒小公主
+                                        </span>
+                                </span>
+                         </div>
+                        </div>
+
+                    </div>
+                    <hr class="mb-4">
+
+
+                    <div class="grid grid-cols-4 my-2">
+                        <div>
+                            <img src="../../src/images/must-know/sub4.jpg" alt="">
+                        </div>
+                        <div class="col-span-3 px-4">
+                            <div>
+                                    <span class="font-bold mb-4">
+                                        
+                                        【Free的😍】马航飞机有提供「免费WiFi⚡」3步骤就能连接！飞行不再无聊~     
+                                    </span>
+                            </div>
+                            <div class="text-sm mt-8">
+                                <span>
+                                    18 Apr 2024 |
+                                    </span>
+                                    <span>
+                                        By <span class="text-red-400">
+                                            笑场的木偶人
+                                        </span>
+                                </span>
+                         </div>
+                        </div>
+
+                    </div>
+                    <hr class="mb-4">
+                    
+                    
+                    <div class="grid grid-cols-4 my-2">
+                        <div>
+                            <img src="../../src/images/must-know/sub5.jpg" alt="">
+                        </div>
+                        <div class="col-span-3 px-4">
+                            <div>
+                                    <span class="font-bold mb-4">
+                                        
+                                        【听起来好刺激❗️】航空公司推出「“盲盒”航班✈️ 」起飞后才向乘客揭晓目的地！
+                                    </span>
+                            </div>
+                            <div class="text-sm mt-8">
+                                <span>
+                                    17 Apr 2024|
+                                    </span>
+                                    <span>
+                                        By <span class="text-red-400">
+                                            偷吃奶酪的杰瑞
+                                        </span>
+                                </span>
+                         </div>
+                        </div>
+
+                    </div>
+                    <hr class="mb-4">
+
+                    <div class="grid grid-cols-4 my-2">
+                        <div>
+                            <img src="../../src/images/must-know/sub6.jpg" alt="">
+                        </div>
+                        <div class="col-span-3 px-4">
+                            <div>
+                                    <span class="font-bold mb-4">
+                                        
+                                        【提早1年买最便宜⁉】旅游平台 : 出国旅行✈️ 这才是「最佳订票时机」！ 
+                                    </span>
+                            </div>
+                            <div class="text-sm mt-8">
+                                <span>
+                                    3 Apr 2024 |
+                                    </span>
+                                    <span>
+                                        By <span class="text-red-400">
+                                            笑场的木偶人
+                                        </span>
+                                </span>
+                         </div>
+                        </div>
+
+                    </div>
+                    <hr class="mb-4">
+
+
+                    <div class="grid grid-cols-4 my-2">
+                        <div>
+                            <img src="../../src/images/must-know/sub7.jpg" alt="">
+                        </div>
+                        <div class="col-span-3 px-4">
+                            <div>
+                                    <span class="font-bold mb-4">
+                                        
+                                        【要去 🇹🇭 玩注意!】即日起 ⚡  泰国6大机场出境费「调涨30铢」！ 
+                                    </span>
+                            </div>
+                            <div class="text-sm mt-8">
+                                <span>
+                                    2 Apr 2024|
+                                    </span>
+                                    <span>
+                                        By <span class="text-red-400">
+                                            笑场的木偶人
+                                        </span>
+                                </span>
+                         </div>
+                        </div>
+
+                    </div>
+                    <hr class="mb-4">
+
+
+
+
+                </div>
+
+                <div class="grid grid-cols-1">
+                    <button type="button" class="btnred justify-self-center w-40 text-lg">装载更多</button>
+
+                </div>
+            </div>
+            </div> 
+            <!-- col span 2 -->
+
+
+            <!-- side -->
+            <div class="my-12 mb-16">
+                <!-- follow -->
+                <div class="grid grid-cols-1">
+                    <div class="justify-self-center">
+                        <span class="text-sm tracking-tighter font-bold">FOLLOW US</span>
+                    </div>
+                    <div class="py-2 grid grid-cols-3 mx-4">
+                        <div class="">
+                        <button class="btnfb">
+                            <i class="fa-brands fa-facebook-f "></i>
+                          </button>
+                        </div>
+                        <div class="">
+                            <button class="btnig">
+                                <i class="fa-brands fa-instagram"></i>
+                              </button>
+                        </div>
+                        
+
+                        <div class="">
+                            <button class="btnyt">
+                                <i class="fa-brands fa-youtube"></i>
+                              </button>
+                        </div>
+                        
+                          
+                    </div>
+                </div>
+
+
+                <!-- fb page -->
+
+
+                <!-- header -->
+                 <div class="catheader">
+                        <span> 热门 </span>   
+                        <div class="hrlinehead">
+                                <hr class="hrlineteal">
+                        </div>
+                 </div>
+
+
+                 <div class="sideheadline">
+                    <div class="col-span-5">
+                        <img src="../../src/images/sidesub1.jpg" class="w-full ">
+                    </div>
+                    <div class="sidefont">
+                        【严重可导致失明😱】大马麻风病例上升『这几种症状⚡』你一定要知道！
+                    </div>
+                 </div>
+                 <div class="pb-4 px-2 pl-52">
+                    <span class="datetext"> posted 5 days ago </span>
+                 </div>
+                 <hr>
+
+                 <div class="sideheadline">
+                    <div class="col-span-5">
+                        <img src="../../src/images/sidesub2.jpg" class="w-full ">
+                    </div>
+                    <div class="sidefont">
+                        【70岁还被迫做工❗️】大马男子退休短短3年就「花光RM700,000」EPF存款😱！
+                    </div>
+                 </div>
+                 <div class="pb-4 px-2 pl-52">
+                    <span class="datetext"> posted 4 days ago </span>
+                 </div>
+                 <hr>
+
+                 <div class="sideheadline">
+                    <div class="col-span-5">
+                        <img src="../../src/images/sidesub3.jpg" class="w-full ">
+                    </div>
+                    <div class="sidefont">
+                        【申请前看清楚❗️】想要从EPF Account 3提款，必须满足这「4大条件⚡」
+                    </div>
+                 </div>
+                 <div class="pb-4 px-2 pl-52">
+                    <span class="datetext"> posted 2 days ago </span>
+                 </div>
+                 <hr>
+                 
+                 <div class="sideheadline">
+                    <div class="col-span-5">
+                        <img src="../../src/images/sidesub4.jpg" class="w-full ">
+                    </div>
+                    <div class="sidefont">
+                        【没有‘老鹰’看🦅】Langkawi⚡Eagle Square全面关闭, 直至另行通知!
+                    </div>
+                 </div>
+                 <div class="pb-4 px-2 pl-52">
+                    <span class="datetext"> posted 5 days ago </span>
+                 </div>
+                 <hr>
+
+                 <div class="sideheadline">
+                    <div class="col-span-5">
+                        <img src="../../src/images/sidesub5.jpg" class="w-full ">
+                    </div>
+                    <div class="sidefont">
+                        【不用跑银行❗】帮孩子开通「Maybank Yippie/-i 储蓄户口」⚡10分钟内搞定! 用MAE app就可以啦~
+                    </div>
+                 </div>
+                 <div class="pb-4 px-2 pl-52">
+                    <span class="datetext"> posted 2 days ago </span>
+                 </div>
+                 <hr>
+
+                 <div class="sideheadline">
+                    <div class="col-span-5">
+                        <img src="../../src/images/sidesub6.jpg" class="w-full ">
+                    </div>
+                    <div class="sidefont">
+                        【降价了❗️】KFC推出「9个套餐促销🔥」一Set Rice Plate最低只需RM9.99！
+                    </div>
+                 </div>
+                 <div class="pb-4 px-2 pl-52">
+                    <span class="datetext"> posted 2 days ago </span>
+                 </div>
+                 <hr>
+
+                 <div class="sideheadline">
+                    <div class="col-span-5">
+                        <img src="../../src/images/sidesub7.jpg" class="w-full ">
+                    </div>
+                    <div class="sidefont">
+                        【梦到已故父母、亲人】原来是暗示⚡ 专家揭真相「跟现实有关」❗️
+                    </div>
+                 </div>
+                 <div class="pb-4 px-2 pl-52">
+                    <span class="datetext"> posted 15 hours ago </span>
+                 </div>
+                 <hr>
+
+
+                 <div class="sideheadline">
+                    <div class="col-span-5">
+                        <img src="../../src/images/sidesub8.jpg" class="w-full ">
+                    </div>
+                    <div class="sidefont">
+                        【大马网红之光✨】马来堂哥「抖音卖榴梿」一个月销售额高达RM490,000❗️
+                    </div>
+                 </div>
+                 <div class="pb-4 px-2 pl-52">
+                    <span class="datetext"> posted 4 days ago </span>
+                 </div>
+                 <hr>
+
+                 <div class="sideheadline">
+                    <div class="col-span-5">
+                        <img src="../../src/images/sidesub9.jpg" class="w-full ">
+                    </div>
+                    <div class="sidefont">
+                        【降价了❗️】KFC推出「9个套餐促销🔥」一Set Rice Plate最低只需RM9.99！
+                    </div>
+                 </div>
+                 <div class="pb-4 px-2 pl-52">
+                    <span class="datetext"> posted 2 days ago </span>
+                 </div>
+                 <hr>
+
+                 <div class="sideheadline">
+                    <div class="col-span-5">
+                        <img src="../../src/images/sidesub10.jpg" class="w-full ">
+                    </div>
+                    <div class="sidefont">
+                        【明明外表Ok❗️】男子自爆快30岁却还是「母胎单身」遭网民酸：别美化自己⚡
+                    </div>
+                 </div>
+                 <div class="pb-4 px-2 pl-52">
+                    <span class="datetext"> posted 5 days ago </span>
+                 </div>
+                 <hr>
+
+                 
+
+        </div> 
+        <!-- side -->
+       
+
+        </div>
+
+    </div>
+    <!-- /content -->
+
+    <!-- footer start -->
+    <div class=" md:h-80 bg-neutral-900 w-[100%] relative py-4">
+        <div class="content md:mx-[17%]  md:w-[66%] text-neutral-400 text-sm">
+            <div class="grid px-6 md:px-4 md:grid-cols-3 justify-items-center">
+
+                <div>
+                    <p class="mb-4">
+                        本站所有文章由会员即时发表，本站对所有文章的真实性、完整性及立场等，不负任何法律责任。所有文章内容只代表发文者个人意见，并非本网站之立场，用户不应信赖内容，并应自行判断内容之真实性。发文者拥有在Viralmedia张贴的文章。
+                    </p>
+                    <p>
+                        由于本站是受到「即时发表」运作方式所规限，故不能完全监察所有即时文章，如有不适当或对于文章出处有疑虑，请联络我们告知，我们将在最短时间内进行撤除。本站有权删除任何留言及拒绝任何人士发文，同时亦有不删除文章的权利。
+                    </p>
+                </div>
+                <div class="grid grid-cols-1">
+                    <div class="justify-self-center">
+                    <p class="font-bold">Follow Us</p>
+                    </div>
+                    <div class="py-2 grid grid-cols-3">
+                        <div class="mx-2">
+                        <button class="btnsns">
+                            <i class="fa-brands fa-facebook-f "></i>
+                          </button>
+                        </div>
+                        <div class="mx-2">
+                            <button class="btnsns">
+                                <i class="fa-brands fa-instagram"></i>
+                              </button>
+                        </div>
+                        
+
+                        <div class="mx-2">
+                            <button class="btnsns">
+                                <i class="fa-brands fa-youtube"></i>
+                              </button>
+                        </div>
+                        
+                          
+                    </div>
+                </div>
+
+
+                <div>
+                    <div class="grid grid-cols-1">
+                        <div class="justify-self-center mb-6">
+                            <p class="font-bold">
+                                联系我们
+                            </p>
+                        </div>
+                        <div class="justify-self-center">
+                            <button class="btnteal2">
+                                Advertise With Us
+                            </button>
+                        </div>
+                        <div class="justify-self-center">
+                            <button class="btnteal2">
+                               Terms & Conditions
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="grid grid-cols-1">
+                <div class="justify-self-center text-sm">
+                    <img class="" src="../../src/images/logowhite-sm.png" alt="">
+                </div>
+                <div class="justify-self-center text-xs mt-4">
+                    <p>
+
+                    </p>
+                    
+                </div>
+                <div class="justify-self-center text-xs">
+                    <p>ViralMedia 2024 - All Rights Reserved</p>
+                    
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+   
+    <!-- footer -->
+
+
+    <script>
+       
+       let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 10000); // Change image every 2 seconds
+}
+        </script>
+
+
+</body>
+</html>
