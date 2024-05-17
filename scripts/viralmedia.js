@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             content: "[Floated in the river for more than 10 days] Fat Cat's \"salvage scene exposed\" sister posted the cremation certificate"
         },
         {
-            img: "../../src/images/wongcholam1.jpg",
+            img: "../../src/images/wongcholam1.JPG",
             link: "../technology/004.html",
             content: "This Game Has Wong Cho Lam Addicted – Here's Why!"
         },
